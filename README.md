@@ -49,5 +49,5 @@ Refer to [how the Apache Camel use it for their Google PubSub Camel component](h
 
 ## License
 
-Original work from the Apache Foundation under Apache Licence v2.
-My modified work - if any - is also released under Apache License v2.
+The original work is made by the Apache Foundation and released under the Apache Licence v2.
+My modified work - if any - is also released under the Apache License v2.
