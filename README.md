@@ -20,11 +20,6 @@ The original source code is available on Apache Camel original repository: [test
 mvnw.cmd install
 ```
 
-## License
-
-Original work from the Apache Foundation under Apache Licence v2.
-My modified work - if any - is also released under Apache License v2.
-
 ## Usage
 
 ### Maven
@@ -51,3 +46,8 @@ Add in your pom.xml:
 ### In your Java project
 
 Refer to [how the Apache Camel use it for their Google PubSub Camel component](https://github.com/apache/camel/tree/master/test-infra/camel-test-infra-google-pubsub/src/test/java/org/apache/camel/test/infra/google/pubsub).
+
+## License
+
+Original work from the Apache Foundation under Apache Licence v2.
+My modified work - if any - is also released under Apache License v2.
