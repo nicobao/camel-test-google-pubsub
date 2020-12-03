@@ -4,7 +4,7 @@
 
 	<groupId>com.github.nicobao</groupId>
 	<artifactId>camel-test-google-pubsub</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 
 	<scm>
 		<connection>scm:git:https://github.com/nicobao/camel-test-google-pubsub</connection>

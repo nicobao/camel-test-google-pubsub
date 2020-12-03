@@ -24,3 +24,26 @@ mvnw.cmd install
 
 Original work from the Apache Foundation under Apache Licence v2.
 My modified work - if any - is also released under Apache License v2.
+
+## Usage
+
+### Maven
+
+Add in your pom.xml:
+
+```xml
+    <project>
+      ...
+      <dependencies>
+        <dependency>
+          <groupId>com.github.nicobao</groupId>
+          <artifactId>camel-test-google-pubsub</artifactId>
+          <classifier>tests</classifier>
+          <type>test-jar</type>
+          <version>1.0.0</version>
+          <scope>test</scope>
+        </dependency>
+      </dependencies>
+      ...
+    </project>
+```
