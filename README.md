@@ -4,7 +4,7 @@ The original source code is available on Apache Camel original repository: [test
 
 ## Requirements
 
-- Java 8
+- Java 11
 
 ## Build
 
