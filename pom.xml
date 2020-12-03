@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.github.nicobao</groupId>
+	<artifactId>camel-test-google-pubsub</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+
+	<scm>
+		<connection>scm:git:https://github.com/nicobao/camel-test-google-pubsub</connection>
+		<developerConnection>scm:git:https://github.com/nicobao/camel-test-google-pubsub</developerConnection>
+		<url>https://github.com/nicobao/camel-test-google-pubsub</url>
+		<tag>HEAD</tag>
+	</scm>
+
+	<properties>
+		<java.version>11</java.version>
+		<camel.version>3.6.0</camel.version>
+		<junit5.version>5.7.0</junit5.version>
+		<google-api.version>1.60.1</google-api.version>
+		<google-cloud.version>1.110.0</google-cloud.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.cloud</groupId>
+			<artifactId>google-cloud-pubsub</artifactId>
+			<version>${google-cloud.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.api</groupId>
+			<artifactId>gax</artifactId>
+			<version>${google-api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.api</groupId>
+			<artifactId>gax-grpc</artifactId>
+			<version>${google-api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit5.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit5.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.camel/camel-test -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-test-junit5</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-google-pubsub</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>testcontainers</artifactId>
+			<version>1.15.0</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.8.1</version>
+					<configuration>
+						<!-- put your configurations here -->
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<inceptionYear>2020</inceptionYear>
+
+	<organization>
+		<name>Nicolas Gimenez :: code copy/pasted from Apache Camel project: I don't own copyright</name>
+	</organization>
+
+	<licenses>
+		<license>
+			<name>Apache License v2</name>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Nicolas Gimenez</name>
+		</developer>
+	</developers>
+
+</project>
