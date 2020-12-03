@@ -45,7 +45,7 @@ Add in your pom.xml:
 
 ### In your Java project
 
-Refer to [how the Apache Camel use it for their Google PubSub Camel component](https://github.com/apache/camel/tree/master/test-infra/camel-test-infra-google-pubsub/src/test/java/org/apache/camel/test/infra/google/pubsub).
+Refer to [how the Apache Camel developers use it to test their Google PubSub Camel component](https://github.com/apache/camel/tree/master/test-infra/camel-test-infra-google-pubsub/src/test/java/org/apache/camel/test/infra/google/pubsub).
 
 ## License
 
