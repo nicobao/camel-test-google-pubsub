@@ -1,7 +1,6 @@
 # Camel :: Test Infra Google Pub/Sub
 
-The original source code is available here: https://github.com/apache/camel/tree/master/test-infra/camel-test-infra-google-pubsub
-and here: https://github.com/apache/camel/blob/master/components/camel-google-pubsub/src/test/java/org/apache/camel/component/google/pubsub/PubsubTestSupport.java
+The original source code is available on Apache Camel original repository: [test-infra](https://github.com/apache/camel/tree/master/test-infra/camel-test-infra-google-pubsub) and [google-pubsub-component](https://github.com/apache/camel/blob/master/components/camel-google-pubsub/src/test/java/org/apache/camel/component/google/pubsub/PubsubTestSupport.java).
 
 ## Requirements
 
