@@ -33,9 +33,7 @@ Add in your pom.xml:
         <dependency>
           <groupId>com.github.nicobao</groupId>
           <artifactId>camel-test-google-pubsub</artifactId>
-          <classifier>tests</classifier>
-          <type>test-jar</type>
-          <version>1.0.0</version>
+          <version>1.0.0-SNAPSHOT</version>
           <scope>test</scope>
         </dependency>
       </dependencies>
