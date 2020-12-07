@@ -4,7 +4,8 @@
 
 	<groupId>com.github.nicobao</groupId>
 	<artifactId>camel-test-google-pubsub</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
 	<scm>
 		<connection>scm:git:https://github.com/nicobao/camel-test-google-pubsub</connection>
@@ -13,12 +14,24 @@
 		<tag>HEAD</tag>
 	</scm>
 
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+
 	<properties>
 		<java.version>11</java.version>
 		<camel.version>3.6.0</camel.version>
 		<junit5.version>5.7.0</junit5.version>
 		<google-api.version>1.60.1</google-api.version>
 		<google-cloud.version>1.110.0</google-cloud.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<dependencies>
@@ -65,6 +78,7 @@
 		</dependency>
 	</dependencies>
 
+
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -76,6 +90,66 @@
 						<!-- put your configurations here -->
 						<source>${java.version}</source>
 						<target>${java.version}</target>
+					</configuration>
+				</plugin>
+
+				<!-- Source and Javadoc -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>3.2.1</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>jar-no-fork</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>3.2.0</version>
+					<executions>
+						<execution>
+							<id>attach-javadocs</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- GPG -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<version>1.6</version>
+					<executions>
+						<execution>
+							<id>sign-artifacts</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>sign</goal>
+							</goals>
+							<configuration>
+								<keyname>1DFF0AA5363E770BBB76352E4FAC444FB3CFA428</keyname>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- Deploy Nexus -->
+				<plugin>
+					<groupId>org.sonatype.plugins</groupId>
+					<artifactId>nexus-staging-maven-plugin</artifactId>
+					<version>1.6.8</version>
+					<extensions>true</extensions>
+					<configuration>
+						<serverId>ossrh</serverId>
+						<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+						<autoReleaseAfterClose>false</autoReleaseAfterClose>
 					</configuration>
 				</plugin>
 			</plugins>
