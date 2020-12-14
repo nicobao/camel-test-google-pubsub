@@ -18,8 +18,11 @@
 package com.github.nicobao;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
+
+import org.apache.camel.CamelContext;
+import org.apache.camel.component.google.pubsub.GooglePubsubComponent;
+import org.apache.camel.test.junit5.CamelTestSupport;
+import org.junit.jupiter.api.extension.RegisterExtension;
 
 import com.github.nicobao.services.GooglePubSubService;
 import com.github.nicobao.services.GooglePubSubServiceFactory;
@@ -35,37 +38,13 @@ import com.google.pubsub.v1.ProjectSubscriptionName;
 import com.google.pubsub.v1.Subscription;
 import com.google.pubsub.v1.Topic;
 import com.google.pubsub.v1.TopicName;
+
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import org.apache.camel.BindToRegistry;
-import org.apache.camel.CamelContext;
-import org.apache.camel.component.google.pubsub.GooglePubsubComponent;
-import org.apache.camel.test.junit5.CamelTestSupport;
-import org.junit.jupiter.api.extension.RegisterExtension;
 
 public class PubsubTestSupport extends CamelTestSupport {
 	@RegisterExtension
 	public static GooglePubSubService service = GooglePubSubServiceFactory.createService();
-
-	public static final String PROJECT_ID;
-
-	static {
-		Properties testProperties = loadProperties();
-		PROJECT_ID = testProperties.getProperty("project.id");
-	}
-
-	private static Properties loadProperties() {
-		Properties testProperties = new Properties();
-		InputStream fileIn = PubsubTestSupport.class.getClassLoader().getResourceAsStream("simple.properties");
-		try {
-			testProperties.load(fileIn);
-
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-
-		return testProperties;
-	}
 
 	protected void addPubsubComponent(CamelContext context) {
 
@@ -74,11 +53,6 @@ public class PubsubTestSupport extends CamelTestSupport {
 
 		context.addComponent("google-pubsub", component);
 		context.getPropertiesComponent().setLocation("ref:prop");
-	}
-
-	@BindToRegistry("prop")
-	public Properties loadRegProperties() throws Exception {
-		return loadProperties();
 	}
 
 	@Override
@@ -92,13 +66,14 @@ public class PubsubTestSupport extends CamelTestSupport {
 	public void createTopicSubscription() throws Exception {
 	}
 
-	public void createTopicSubscriptionPair(String topicName, String subscriptionName) {
-		createTopicSubscriptionPair(topicName, subscriptionName, 10);
+	public void createTopicSubscriptionPair(String projectId, String topicName, String subscriptionName) {
+		createTopicSubscriptionPair(projectId, topicName, subscriptionName, 10);
 	}
 
-	public void createTopicSubscriptionPair(String topicName, String subscriptionName, int ackDeadlineSeconds) {
-		TopicName projectTopicName = TopicName.of(PROJECT_ID, topicName);
-		ProjectSubscriptionName projectSubscriptionName = ProjectSubscriptionName.of(PROJECT_ID, subscriptionName);
+	public void createTopicSubscriptionPair(String projectId, String topicName, String subscriptionName,
+			int ackDeadlineSeconds) {
+		TopicName projectTopicName = TopicName.of(projectId, topicName);
+		ProjectSubscriptionName projectSubscriptionName = ProjectSubscriptionName.of(projectId, subscriptionName);
 
 		Topic topic = Topic.newBuilder().setName(projectTopicName.toString()).build();
 		Subscription subscription = Subscription.newBuilder()
